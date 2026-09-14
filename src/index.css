@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+body{
+    font-family: "Inter", sans-serif;
+}
+h1,h2,h3,h4,h5,h6,title{
+     font-family: "Playfair", serif;
+}
+.con{
+    width: 1200px;
+    margin: auto;
+}
+footer .om p{
+    font-size: 14px;
+    font-weight: 400;
+    color: gray;
+    margin-bottom: 8px;
+}
+footer .om p:hover{
+    color: black;
+    cursor: pointer;
+}
+header li:hover{
+    color: gray;
+}
