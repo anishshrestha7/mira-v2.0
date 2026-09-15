@@ -1,4 +1,4 @@
-export let blog = [
+export const blog = [
     { id: 3, date: "December 8, 2022", title: "Lorem Ipsum is simply dummy", button: "read more", image: "../blog3.webp" },
     { id: 4, date: "December 8, 2022", title: "Lorem Ipsum is simply dummy", button: "read more", image: "../blog4.webp" },
     { id: 1, date: "December 8, 2022", title: "Lorem Ipsum is simply dummy", button: "read more", image: "../blog1.webp" },
@@ -6,7 +6,7 @@ export let blog = [
 ]
 
 
-export let team = [
+export const team = [
     {
         id: 1, name: "Martin Jerry", title: "Ceo Founder", des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer condimentum", socials: [
             { platform: "facebook", icon: "fa-facebook-f", link: "#" },

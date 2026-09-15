@@ -14,8 +14,8 @@ function Header() {
   }, []);
 
   return (
-    <header className='con sticky top-0 z-50 bg-white py-4'>
-      <div className='flex justify-between items-center md:px-15'>
+    <header className='sticky top-0 z-50 w-full bg-white py-4'>
+      <div className='con flex items-center justify-between md:px-15'>
         <div>
           <Link to="/">
           <img className='w-32' src={logo} alt="Logo" />
@@ -35,7 +35,7 @@ function Header() {
           ))}
 
           <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/Cart">Cart ({cartItemCount})</Link></li>
+          <li><Link to="/Cart" className="inline-flex w-20 tabular-nums">Cart (<span className="mx-1 text-[#E25F19] font-semibold">{cartItemCount}</span>)</Link></li>
         </ul>
       </div>
     </header>

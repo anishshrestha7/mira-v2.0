@@ -1,17 +1,44 @@
-import { useContext, useEffect, useState } from 'react';
+import { forwardRef, useCallback, useContext, useEffect, useImperativeHandle, useState } from 'react';
 import Card from '../Component/Card';
 import { Link } from 'react-router-dom';
 import { CartContext } from './Pages/CartContext';
 
-function A() {
+const INITIAL_PRODUCT_COUNT = 32;
+const LOAD_MORE_PRODUCT_COUNT = 16;
+
+const A = forwardRef(function A(_, ref) {
     const { dispatch } = useContext(CartContext)
     const [data, setData] = useState([]);
     const [addedItemIds, setAddedItemIds] = useState([]);
-    useEffect(() => {
-        fetch('https://dummyjson.com/products')
-            .then(res => res.json())
-            .then(json => setData(json.products));
+    const [isLoading, setIsLoading] = useState(false);
+    const [hasMoreProducts, setHasMoreProducts] = useState(true);
+
+    const loadProducts = useCallback(async (skip = 0, limit = LOAD_MORE_PRODUCT_COUNT) => {
+        setIsLoading(true);
+
+        try {
+            const response = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
+            const json = await response.json();
+
+            setData((currentProducts) => skip === 0 ? json.products : [...currentProducts, ...json.products]);
+            setHasMoreProducts(skip + json.products.length < json.total);
+            return json.products.length > 0;
+        } finally {
+            setIsLoading(false);
+        }
     }, []);
+
+    useEffect(() => {
+        loadProducts(0, INITIAL_PRODUCT_COUNT);
+    }, [loadProducts]);
+
+    const loadMoreProducts = useCallback(() => {
+        if (isLoading || !hasMoreProducts) return Promise.resolve(false);
+
+        return loadProducts(data.length, LOAD_MORE_PRODUCT_COUNT);
+    }, [data.length, hasMoreProducts, isLoading, loadProducts]);
+
+    useImperativeHandle(ref, () => ({ loadMoreProducts }), [loadMoreProducts]);
 
     const handleAddToCart = (item) => {
         dispatch({ type: 'addtocart', payload: item });
@@ -49,6 +76,6 @@ function A() {
             </div>
         </div>
     );
-}
+});
 
 export default A;

@@ -8,6 +8,7 @@ import A from './assets/A'
 import Category from './assets/Pages/Category'
 import Details from './assets/Pages/Details'
 import Cart from './assets/Pages/Cart'
+import SignIn from './assets/Pages/SignIn'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/category/:categoryId" element={<Category/>}/>
       <Route path="/details/:id" element={<Details/>}/>  
       <Route path="/cart/" element={<Cart/>}/>  
+      <Route path="/signin" element={<SignIn/>}/>
     </Routes>
     <Footer/>
     </>
