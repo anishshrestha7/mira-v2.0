@@ -1,4 +1,17 @@
-import React, { useReducer, createContext } from 'react'
+import React, { useEffect, useReducer, createContext } from 'react'
+
+const CART_STORAGE_KEY = 'mira-cart';
+
+const getInitialCartState = () => {
+    try {
+        const savedCart = localStorage.getItem(CART_STORAGE_KEY);
+        const cart = savedCart ? JSON.parse(savedCart) : [];
+
+        return { cart: Array.isArray(cart) ? cart : [] };
+    } catch {
+        return { cart: [] };
+    }
+};
 
 let cartReducer = (state, action) => {
     switch (action.type) {
@@ -54,7 +67,11 @@ let cartReducer = (state, action) => {
 
 let CartContext = createContext();
 let CartProvider = ({ children }) => {
-    let [state, dispatch] = useReducer(cartReducer, { cart: [] });
+    let [state, dispatch] = useReducer(cartReducer, undefined, getInitialCartState);
+
+    useEffect(() => {
+        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(state.cart));
+    }, [state.cart]);
     
     return (
         <CartContext.Provider value={{ state, dispatch }}>

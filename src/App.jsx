@@ -9,6 +9,7 @@ import Category from './assets/Pages/Category'
 import Details from './assets/Pages/Details'
 import Cart from './assets/Pages/Cart'
 import SignIn from './assets/Pages/SignIn'
+import Contact from './assets/Pages/Contact'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="/details/:id" element={<Details/>}/>  
       <Route path="/cart/" element={<Cart/>}/>  
       <Route path="/signin" element={<SignIn/>}/>
+      <Route path="/contact" element={<Contact/>}/>
     </Routes>
     <Footer/>
     </>
