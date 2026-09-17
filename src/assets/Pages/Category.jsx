@@ -22,7 +22,7 @@ function Category() {
     fetch(`https://dummyjson.com/products/category/${categoryId}`) .then((res) => res.json()) .then((data) => setProducts(data.products))
   }, [categoryId]); 
   return (
-   <div className="container mx-auto py-10">
+   <div className="con py-10">
       <h2 className="text-xl ps-5 font-semibold mb-6 ">
         Category Of : {categoryId}
       </h2>

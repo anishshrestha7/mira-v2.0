@@ -50,7 +50,7 @@ const A = forwardRef(function A(_, ref) {
     };
 
     return (
-        <div className='container mx-auto'>
+        <div className='con'>
             <h2>product list</h2>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

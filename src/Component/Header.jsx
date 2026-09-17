@@ -18,7 +18,7 @@ function Header() {
 
   return (
     <header className='sticky top-0 z-50 w-full bg-white py-4'>
-      <div className='con flex items-center justify-between md:px-15'>
+      <div className='con flex items-center justify-between md:px-10 xl:px-15'>
         <div>
           <Link to="/" onClick={closeMenu}>
           <img className='w-28 sm:w-32' src={logo} alt="Logo" />
@@ -29,13 +29,17 @@ function Header() {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/About">About us</Link></li>
           
-          {categories.slice(1, 6).map((cat) => (
-            <li key={cat.slug}>
+          {categories.slice(1, 6).map((cat, i) => {
+            const breakpointClass = i === 2 ? 'hidden lg:block' : i >= 3 ? 'hidden xl:block' : '';
+
+            return (
+            <li key={cat.slug} className={breakpointClass}>
               <Link to={`/category/${cat.slug}`} className="hover:text-gray-600">
                 {cat.name}
               </Link>
             </li>
-          ))}
+          );
+          })}
 
           <li><Link to="/contact">Contact</Link></li>
           <li><Link to="/Cart" className="inline-flex w-20 tabular-nums">Cart (<span className="mx-1 text-[#E25F19] font-semibold">{cartItemCount}</span>)</Link></li>
