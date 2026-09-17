@@ -4,10 +4,10 @@ import logo from '../assets/logo.webp';
 function Footer() {
   return (
     <>
-      <footer className="con grid grid-cols-5">
+      <footer className="con grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-0">
         <div>
           <img className='mb-6' src={logo} alt="LOGO" />
-          <p className='w-45 text-sm font-normal mb-3 text-gray-600'>Lorem ipsum dolor sit amet tempor, consectetur adipisicing.</p>
+          <p className='w-45 max-w-full text-sm font-normal mb-3 text-gray-600'>Lorem ipsum dolor sit amet tempor, consectetur adipisicing.</p>
           <div className='gap-2 flex text-[#626262]'>
             <a className='hover:text-black font-semibold' href="https://www.facebook.com/" target="_blank"><i className="fa-brands fa-facebook" /></a>
             <a className='hover:text-black font-semibold' href="https://www.youtube.com/" target="_blank"><i className="fa-brands fa-youtube" /></a>
@@ -39,12 +39,12 @@ function Footer() {
         </div>
         <div className='mb-20'>
           <h2 className='text-[18px] uppercase pt-4 pb-4'>newsletter</h2>
-          <p className='w-70 text-gray-600 text-sm font-normal mb-3'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+          <p className='w-70 max-w-full text-gray-600 text-sm font-normal mb-3'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
           <div className='flex'>
             <form action>
-              <input className='w-45 border border-gray-400 placeholder:text-xs ps-4 py-3 focus:outline-none text-xs ' type="text" name placeholder="Your email address" />
+              <input className='w-full min-w-0 sm:w-45 border border-gray-400 placeholder:text-xs ps-4 py-3 focus:outline-none text-xs ' type="text" name placeholder="Your email address" />
             </form>
-            <button className="w-30 text-sm font-normal px-2 py-2 text-white bg-[black] cursor-pointer hover:bg-gray-600 rounded-tr rounded-br"> Subscribe</button>
+            <button className="w-auto whitespace-nowrap sm:w-30 text-sm font-normal px-2 py-2 text-white bg-[black] cursor-pointer hover:bg-gray-600 rounded-tr rounded-br"> Subscribe</button>
           </div>
         </div>
       </footer>
